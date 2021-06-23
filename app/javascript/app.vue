@@ -1,14 +1,42 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <table>
+      <tbody>
+        <tr>
+          <th>ID</th>
+          <th>name</th>
+          <th>department</th>
+          <th>gender</th>
+        </tr>
+        <tr v-for="e in employees" :key="e.id">
+          <td>{{ e.id }}</td>
+          <td>{{ e.name }}</td>
+          <td>{{ e.department }}</td>
+          <td>{{ e.gender }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
+import axios from 'axios';
+
+export default{
+  data(){
+    return{
+      employees: []
+    }
+  },
+  mounted(){
+    this.mountEmployees();
+  },
+  methods: {
+    mountEmployees(){
+      axios.get('api/v1/employees.json')
+      .then( response => {
+        this.employees = response.data;
+      })
     }
   }
 }

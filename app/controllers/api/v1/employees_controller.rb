@@ -4,7 +4,7 @@ class Api::V1::EmployeesController < ApiController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   
   def index
-    @employees = Employee.all
+    @employees = Employee.select(:id, :name, :department, :gender)
     render json: @employees
   end
   
