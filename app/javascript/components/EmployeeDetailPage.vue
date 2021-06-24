@@ -23,10 +23,10 @@
 import axios from 'axios';
 
 export default {
+  props: ['id'],
   data: function () {
     return {
-      employee: {},
-        id: this.$route.params.id
+      employee: {}
     }
   },
   mounted () {

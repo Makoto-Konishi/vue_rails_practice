@@ -18,6 +18,7 @@ export default new Router({
     {
       path: '/employees/:id', 
       component: EmployeeDetailPage,
+      props: true
     }
   ],
 });
