@@ -1,6 +1,6 @@
 <template>
 <div>
-  <form @submit.prevent="createEmployee">
+  <form :errors="errors" :employee="employee" @submit="createEmployee">
     <!-- Vue コンポーネントの errors データに要素が格納されている場合にそれらをリストアップ -->
     <div v-if="errors.length != 0">
       <ul v-for="e in errors" :key="e">
@@ -48,7 +48,12 @@
 <script>
 import axios from 'axios';
 
+import EmployeeFormPane from '../components/EmployeeFormPane.vue'
+
 export default {
+  components: {
+    EmployeeFormPane
+  },
   data: function () {
     return {
       employee: {
