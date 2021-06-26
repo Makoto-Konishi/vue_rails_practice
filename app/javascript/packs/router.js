@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import EmployeeIndexPage from '../components/EmployeeIndexPage.vue';
 import EmployeeDetailPage from '../components/EmployeeDetailPage.vue';
+import EmployeeNewPage from '../components/EmployeeNewPage.vue'
 
 
 // Vue.use() Vueのプラグインを使う
@@ -16,10 +17,16 @@ export default new Router({
       component: EmployeeIndexPage
     },
     {
-      path: '/employees/:id', 
+      // idは数字だけに制限
+      path: '/employees/:id(\\d+)', 
       component: EmployeeDetailPage,
       name: 'EmployeeDetailPage',
       props: true
+    },
+    {
+      path: '/employees/new',
+      name: 'EmployeeNewPage',
+      component: EmployeeNewPage
     }
-  ],
+  ]
 });
