@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import EmployeeIndexPage from '../components/EmployeeIndexPage.vue';
 import EmployeeDetailPage from '../components/EmployeeDetailPage.vue';
-import EmployeeNewPage from '../components/EmployeeNewPage.vue'
+import EmployeeNewPage from '../components/EmployeeNewPage.vue';
+import EmployeeEditPage from '../components/EmployeeEditPage.vue';
 
 
 // Vue.use() Vueのプラグインを使う
@@ -27,6 +28,12 @@ export default new Router({
       path: '/employees/new',
       name: 'EmployeeNewPage',
       component: EmployeeNewPage
+    },
+    {
+      path: '/employees/:id(\\d+)/edit',
+      name: 'EmployeeEditPage',
+      component: EmployeeEditPage,
+      props: true
     }
   ]
 });

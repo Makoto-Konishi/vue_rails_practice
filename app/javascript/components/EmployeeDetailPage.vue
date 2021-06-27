@@ -1,4 +1,6 @@
 <template>
+<div>
+
   <dl>
     <dt>ID</dt>
     <dd>{{ employee.id }}</dd>
@@ -17,6 +19,8 @@
     <dt>Note</dt>
     <dd>{{ employee.note }}</dd>
   </dl>
+  <router-link :to="{name: 'EmployeeEditPage', params: {id: id }}">編集</router-link>
+</div>
 </template>
 
 <script>
@@ -35,7 +39,10 @@ export default {
   methods: {
     mountDetail(){
       axios.get(`/api/v1/employees/${this.id}.json`)
-      .then(response => (this.employee = response.data))
+      .then(response => {
+        console.log(response.data);
+        this.employee = response.data
+      })
     }
   }
 }

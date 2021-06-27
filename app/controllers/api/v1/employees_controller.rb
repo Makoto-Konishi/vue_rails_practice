@@ -24,6 +24,15 @@ class Api::V1::EmployeesController < ApiController
       render json: { errors: employee.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      head :no_content
+    else
+      render json: { errors: @employee.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
   
   private
   # ActiveRecordのレコードが見つからなければ404 not foundを応答する
