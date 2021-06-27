@@ -33,6 +33,12 @@ class Api::V1::EmployeesController < ApiController
       render json: { errors: @employee.errors.full_messages}, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy!
+    head :no_content
+  end
   
   private
   # ActiveRecordのレコードが見つからなければ404 not foundを応答する
